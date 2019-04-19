@@ -13,7 +13,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 
 app.use('*', function (req, res, next) {
-    console.log(req.baseUrl)
+    console.log(`${Date.now()}: ${req.baseUrl}`);
     if (req.method === "POST") console.log(JSON.stringify(req.body));
     res.status(200).end();
 });
