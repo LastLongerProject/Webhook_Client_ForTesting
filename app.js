@@ -12,8 +12,9 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
+let ctr = 0;
 app.use('*', function (req, res, next) {
-    console.log(`${new Date()}: ${req.baseUrl}`);
+    console.log(`\n[${++ctr}] ${new Date()}: ${req.baseUrl}`);
     if (req.method === "POST") console.log(JSON.stringify(req.body));
     res.status(200).end();
 });
