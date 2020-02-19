@@ -5,7 +5,7 @@ var logger = require('morgan');
 
 var app = express();
 
-app.use(logger(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms'));
+app.use(logger(' └─ :remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms'));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
