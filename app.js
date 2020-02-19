@@ -5,7 +5,7 @@ var logger = require('morgan');
 
 var app = express();
 
-app.use(logger(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms - :res[content-length]'));
+app.use(logger(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms'));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
@@ -14,8 +14,7 @@ app.use(cookieParser());
 
 let ctr = 0;
 app.use('*', function (req, res, next) {
-    console.log(`\n[${++ctr}] ${new Date()}: ${req.baseUrl}`);
-    if (req.method === "POST") console.log(JSON.stringify(req.body));
+    console.log(`\n[${++ctr}]` + (req.method === "POST" ? JSON.stringify(req.body) : ""));
     res.status(200).end();
 });
 
