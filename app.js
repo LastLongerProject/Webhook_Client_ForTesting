@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 let ctr = 0;
 app.use('*', function (req, res, next) {
-    console.log(`\n[${++ctr}]` + (req.method === "POST" ? JSON.stringify(req.body) : ""));
+    console.log(`\n[${++ctr}] ` + (req.method === "POST" ? JSON.stringify(req.body) : ""));
     res.status(200).end();
 });
 
